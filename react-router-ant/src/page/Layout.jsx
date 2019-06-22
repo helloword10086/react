@@ -1,7 +1,19 @@
 import React from 'react';
 import { Layout, Row, Col, Avatar, Input, 
   Menu, Dropdown, Icon, Badge } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link,Route } from 'react-router-dom';
+import Index from '../table/index'
+function Table(){
+  // console.log(this.props.children)
+  return (
+    <div>table</div>
+  )
+}
+function Label(){
+  return (
+    <div>label</div>
+  )
+}
 
 const { Header, Footer, Sider, Content }  = Layout;
 function DropMenu() {
@@ -53,20 +65,21 @@ class PageLayout extends React.Component {
               }>
                 <Menu.Item>
                   {/* /table */}
-                  <Link to={"table"}>表格</Link>
+                  <Link to={{
+                    pathname:'/table',
+                    search:"?type=all&a=1"
+                  }}>表格</Link>
                 </Menu.Item>
                 <Menu.Item>
                   {/* /table */}
-                  <Link to={"label"}>标签</Link>
+                  <Link to={"index"}>标签</Link>
                 </Menu.Item>
               </Menu.SubMenu>
             </Menu>
           </Sider>
-          <Content>
-           {/* {
-             
-             this.props.children
-           } */}
+          <Content style={{marginLeft: '5%'}} >
+           <Route path='/table' component={Table}></Route>
+           <Route path='/index' component={Index}></Route>
           </Content>
         </Layout>
         <Footer>
